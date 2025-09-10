@@ -1,0 +1,22 @@
+### Login
+POST http://localhost:3003/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "superstats",
+  "password": "test123"
+}
+
+### Logout (requires token from login response)
+POST http://localhost:3003/api/auth/logout
+Content-Type: application/json
+Authorization: Bearer YOUR_JWT_TOKEN_HERE
+
+
+### Get All Orders (Protected)
+GET http://localhost:3003/api/orders
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJzdXBlcnN0YXRzIiwiaWF0IjoxNzU3NDA0MjM0LCJleHAiOjE3NTc0MDc4MzR9.GtWpBMFwrKxEuQKDvj-duA4fN9M5RHXqJaM1mc3KjFY
+
+### Get All Orders (Protected)
+GET http://localhost:3003/api/customers
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJzdXBlcnN0YXRzIiwiaWF0IjoxNzU3NDA0MjM0LCJleHAiOjE3NTc0MDc4MzR9.GtWpBMFwrKxEuQKDvj-duA4fN9M5RHXqJaM1mc3KjFY
