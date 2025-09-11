@@ -1,5 +1,5 @@
 ### Login
-POST http://localhost:3003/api/auth/login
+POST http://localhost:5001/api/auth/login
 Content-Type: application/json
 
 {
@@ -8,15 +8,15 @@ Content-Type: application/json
 }
 
 ### Logout (requires token from login response)
-POST http://localhost:3003/api/auth/logout
+POST http://localhost:5001/api/auth/logout
 Content-Type: application/json
 Authorization: Bearer YOUR_JWT_TOKEN_HERE
 
 
 ### Get All Orders (Protected)
-GET http://localhost:3003/api/orders
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJzdXBlcnN0YXRzIiwiaWF0IjoxNzU3NDA0MjM0LCJleHAiOjE3NTc0MDc4MzR9.GtWpBMFwrKxEuQKDvj-duA4fN9M5RHXqJaM1mc3KjFY
+GET http://localhost:5001/api/orders
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJzdXBlcnN0YXRzIiwiaWF0IjoxNzU3NTcwODMzLCJleHAiOjE3NTc1NzQ0MzN9.LehQWzo0RvZIC8CqSJsN8Ptu6QC-8DVjaPjcW8iaOqc
 
 ### Get All Orders (Protected)
-GET http://localhost:3003/api/customers
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJzdXBlcnN0YXRzIiwiaWF0IjoxNzU3NDA0MjM0LCJleHAiOjE3NTc0MDc4MzR9.GtWpBMFwrKxEuQKDvj-duA4fN9M5RHXqJaM1mc3KjFY
+GET http://localhost:5001/api/customers
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJzdXBlcnN0YXRzIiwiaWF0IjoxNzU3NTcwODMzLCJleHAiOjE3NTc1NzQ0MzN9.LehQWzo0RvZIC8CqSJsN8Ptu6QC-8DVjaPjcW8iaOqc
