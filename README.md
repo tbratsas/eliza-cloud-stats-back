@@ -17,4 +17,4 @@ Node JS application that serves as the API for the **Eliza Reports App**.
 ## Test apis
 
 - You can use **test_apis\auth.test.http** file, to test endpoints.
-- All endpoints are protected, you need to login first ang get the jwt token
+- All endpoints are protected, you need to login first ang get the jwt token.
