@@ -1,20 +1,22 @@
 const pool = require('../db');
 
-exports.getAllSalesPerProduct = async (req, res) => {
+exports.getAllSalesPerCategory = async (req, res) => {
     try {
         const [rows] = await pool.query(`
-                SELECT 
-                p.name AS product_name,
-                oi.product_id,
+            SELECT 
+                pc.name AS category_name,
                 SUM(oi.quantity) AS total_quantity,
                 SUM(oi.price * oi.quantity) AS total_sales
-                FROM 
+            FROM 
                 order_items oi
-                JOIN 
+            JOIN 
                 products p ON oi.product_id = p.id
-                GROUP BY 
-                oi.product_id, p.name
-                ORDER BY total_sales DESC;
+            JOIN 
+                product_categories pc ON p.product_category_id = pc.id
+            GROUP BY 
+                pc.name
+            ORDER BY 
+                total_sales DESC;
             `);
         //console.log(rows)
         res.json(rows);

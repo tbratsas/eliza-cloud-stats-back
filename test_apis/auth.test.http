@@ -29,3 +29,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hb
 ### Get All Order Items (Protected)
 GET http://localhost:5001/api/sales_per_product
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJzdXBlcnN0YXRzIiwiaWF0IjoxNzU3NjYxNzE1LCJleHAiOjE3NTc2NzI1MTV9.OUwhZyk9SM2g0tIUiBD29qxJeECNheT-bScyYyR-hv8
+
+### Get All Order Items (Protected)
+GET http://localhost:5001/api/sales_per_category
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJzdXBlcnN0YXRzIiwiaWF0IjoxNzU3NzY2MzA1LCJleHAiOjE3NTc3NzcxMDV9.n_8er9vSDj4bLlgxfW8h7HrneOCOeAsdTc4soSMd4jk
