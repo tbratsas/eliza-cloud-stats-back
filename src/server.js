@@ -7,8 +7,9 @@ const authRoutes = require('./routes/auth.routes');
 const ordersRoutes = require('./routes/orders.routes');
 const customersRoutes = require('./routes/customers.routes');
 const categoriesRoutes = require('./routes/categories.routes');
-const salesPerProduct = require('./routes/sales_per_product.routes');
-const salesPerCategory = require('./routes/sales_per_category.routes');
+const salesPerProduct = require('./routes/sales/sales_per_product.routes');
+const salesPerCategory = require('./routes/sales/sales_per_category.routes');
+const vat = require('./routes/vat/vat.routes');
 
 const PORT = process.env.SERVER_PORT
 //console.log(PORT)
@@ -21,5 +22,6 @@ app.use('/api', customersRoutes);
 app.use('/api', categoriesRoutes);
 app.use('/api', salesPerProduct);
 app.use('/api', salesPerCategory);
+app.use('/api', vat);
 
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
