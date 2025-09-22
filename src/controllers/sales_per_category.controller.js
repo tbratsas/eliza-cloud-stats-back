@@ -16,7 +16,7 @@ exports.getAllSalesPerCategory = async (req, res) => {
                 products p ON oi.product_id = p.id
             JOIN 
                 product_categories pc ON p.product_category_id = pc.id
-        `;
+        `
 
         // Conditions array
         const conditions = [];
