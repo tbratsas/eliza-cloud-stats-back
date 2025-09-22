@@ -2,7 +2,10 @@ const pool = require('../db');
 
 exports.getAllSalesPerCategory = async (req, res) => {
     try {
-        const [rows] = await pool.query(`
+        const { startDate, endDate } = req.query;
+
+        // Base query
+        let query = `
             SELECT 
                 pc.name AS category_name,
                 SUM(oi.quantity) AS total_quantity,
@@ -13,12 +16,36 @@ exports.getAllSalesPerCategory = async (req, res) => {
                 products p ON oi.product_id = p.id
             JOIN 
                 product_categories pc ON p.product_category_id = pc.id
-            GROUP BY 
-                pc.name
-            ORDER BY 
-                total_sales DESC;
-            `);
-        //console.log(rows)
+        `;
+
+        // Conditions array
+        const conditions = [];
+        const params = [];
+
+        if (startDate) {
+            conditions.push('oi.created_at >= ?');
+            params.push(new Date(startDate));
+        }
+
+        if (endDate) {
+            conditions.push('oi.created_at <= ?');
+            params.push(new Date(endDate));
+        }
+
+        // Add WHERE clause if needed
+        if (conditions.length > 0) {
+            query += ` WHERE ${conditions.join(' AND ')}`;
+        }
+
+        // Final grouping and ordering
+        query += `
+            GROUP BY pc.name
+            ORDER BY total_sales DESC;
+        `;
+
+        const [rows] = await pool.query(query, params);
+        
+        console.log(rows)
         res.json(rows);
     } catch (err) {
         console.error('Error fetching order_items:', err);
