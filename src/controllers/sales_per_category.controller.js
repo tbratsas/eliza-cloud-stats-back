@@ -45,7 +45,7 @@ exports.getAllSalesPerCategory = async (req, res) => {
 
         const [rows] = await pool.query(query, params);
         
-        console.log(rows)
+        //console.log(rows)
         res.json(rows);
     } catch (err) {
         console.error('Error fetching order_items:', err);
