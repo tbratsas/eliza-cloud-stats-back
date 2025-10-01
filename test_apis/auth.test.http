@@ -3,9 +3,12 @@ POST http://localhost:5001/api/auth/login
 Content-Type: application/json
 
 {
-  "username": "superstats",
-  "password": "test123"
+  "username": "superuser",
+  "password": "superuser"
 }
+
+### Just GET
+GET http://localhost:5001/
 
 ### Logout (requires token from login response)
 POST http://localhost:5001/api/auth/logout
@@ -27,7 +30,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hb
 
 ### Get All Sales per Product (Protected)
 GET http://localhost:5001/api/sales_per_product
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJzdXBlcnN0YXRzIiwiaWF0IjoxNzU3NjYxNzE1LCJleHAiOjE3NTc2NzI1MTV9.OUwhZyk9SM2g0tIUiBD29qxJeECNheT-bScyYyR-hv8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJzdXBlcnVzZXIiLCJpYXQiOjE3NTg3ODM5NzMsImV4cCI6MTc1ODc5NDc3M30.lLiFvKaQpZE_vWo4dG2t2IE_ZWCC4s1egKdT0ZfFiKg
 
 ### Get All Sales per Category (Protected)
 GET http://localhost:5001/api/sales_per_category
