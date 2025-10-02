@@ -8,6 +8,7 @@ exports.getAllSalesPerCategory = async (req, res) => {
         let query = `
             SELECT 
                 pc.name AS category_name,
+                pc.id AS category_id,
                 SUM(oi.quantity) AS total_quantity,
                 SUM(oi.price * oi.quantity) AS total_sales
             FROM 
@@ -39,7 +40,8 @@ exports.getAllSalesPerCategory = async (req, res) => {
 
         // Final grouping and ordering
         query += `
-            GROUP BY pc.name
+            GROUP BY 
+                pc.id, pc.name
             ORDER BY total_sales DESC;
         `;
 
