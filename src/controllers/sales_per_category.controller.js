@@ -3,7 +3,7 @@ const pool = require('../db');
 exports.getAllSalesPerCategory = async (req, res) => {
     try {
         const { startDate, endDate } = req.query;
-
+        console.log(req.query)
         // Base query
         let query = `
             SELECT 
@@ -12,7 +12,7 @@ exports.getAllSalesPerCategory = async (req, res) => {
                 SUM(oi.quantity) AS total_quantity,
                 SUM(oi.price * oi.quantity) AS total_sales
             FROM 
-                order_items oi
+                archived_order_items oi
             JOIN 
                 products p ON oi.product_id = p.id
             JOIN 

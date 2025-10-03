@@ -12,7 +12,7 @@ exports.getAllSalesPerProduct = async (req, res) => {
                 SUM(oi.quantity) AS total_quantity,
                 SUM(oi.price * oi.quantity) AS total_sales
             FROM 
-                order_items oi
+                archived_order_items oi
             JOIN 
                 products p ON oi.product_id = p.id
         `
