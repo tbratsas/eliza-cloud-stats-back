@@ -2,47 +2,47 @@ const pool = require('../db');
 
 exports.getAllSalesPerProduct = async (req, res) => {
     try {
-        const { startDate, endDate } = req.query;
+        const { start_date_gte, end_date_lte } = req.query;
 
-        // Base query
-        let query = `
-            SELECT 
-                p.name AS product_name,
-                oi.product_id,
-                SUM(oi.quantity) AS total_quantity,
-                SUM(oi.price * oi.quantity) AS total_sales
-            FROM 
-                archived_order_items oi
-            JOIN 
-                products p ON oi.product_id = p.id
-        `
-        // Conditions array
         const conditions = [];
         const params = [];
 
-        if (startDate) {
-            conditions.push('oi.created_at >= ?');
-            params.push(new Date(startDate));
+        // Join archived_orders for filtering by created_at
+        if (start_date_gte) {
+            conditions.push('o.created_at >= ?');
+            params.push(new Date(start_date_gte));
         }
 
-        if (endDate) {
-            conditions.push('oi.created_at <= ?');
-            params.push(new Date(endDate));
+        if (end_date_lte) {
+            conditions.push('o.created_at <= ?');
+            params.push(new Date(end_date_lte));
         }
 
-        // Add WHERE clause if needed
+        let query = `
+                SELECT 
+                    p.name AS product_name,
+                    oi.product_id,
+                    SUM(oi.quantity) AS total_quantity,
+                    SUM(oi.price * oi.quantity) AS total_sales
+                FROM 
+                    archived_order_items oi
+                JOIN 
+                    products p ON oi.product_id = p.id
+                JOIN
+                    archived_orders o ON oi.archived_order_id = o.id
+            `;
+
         if (conditions.length > 0) {
-            query += ` WHERE ${ conditions.join(' AND ') } `;
+            query += ` WHERE ${conditions.join(' AND ')} `;
         }
 
-        // Final grouping and ordering
         query += `
             GROUP BY oi.product_id, p.name
             ORDER BY total_sales DESC;
         `;
 
         const [rows] = await pool.query(query, params);
-        
+
         //console.log(rows)
         res.json(rows);
     } catch (err) {
