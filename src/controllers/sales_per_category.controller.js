@@ -3,7 +3,7 @@ const pool = require('../db');
 exports.getAllSalesPerCategory = async (req, res) => {
     try {
         const { startDate, endDate } = req.query;
-        console.log(req.query)
+        //console.log(req.query)
         // Base query
         let query = `
             SELECT 

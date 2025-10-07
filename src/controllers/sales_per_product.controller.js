@@ -38,7 +38,8 @@ exports.getAllSalesPerProduct = async (req, res) => {
 
         query += `
             GROUP BY oi.product_id, p.name
-            ORDER BY total_sales DESC;
+            ORDER BY total_sales DESC
+            LIMIT 20;
         `;
 
         const [rows] = await pool.query(query, params);
